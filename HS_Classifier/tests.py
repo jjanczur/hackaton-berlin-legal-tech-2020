@@ -176,19 +176,44 @@ class MyTestCase(unittest.TestCase):
         print(X1, Y1)
 
     def test_final(self):
-        df = pd.read_csv("G:/UCI/Q2/ML/Hate_Speech_nonan.csv")
+        df = pd.read_csv("train_E6oV3lV.csv")
 
+        dff = df.drop(['label'], axis=1)
 
+        from sklearn.model_selection import train_test_split
+        X_temp, X_test, y_temp, y_test = train_test_split(dff, list(df.label), test_size=0.1)
 
+        X_temp['label'] = y_temp
 
+        nonhate = X_temp[X_temp['label'] == 0]
 
+        hate = X_temp[X_temp.label == 1]
 
+        nonhatesample = nonhate.sample(n=hate.shape[0])
 
+        ds = pd.concat([hate, nonhatesample], axis=0)
 
+        ds.to_csv("train_E6oV3lV.csv")
+        ds = pd.read_csv("train_E6oV3lV.csv")
+        ds_temp = ds
+        testdf = X_test
+        testdf['label'] = y_test
+        ds = pd.concat([ds_temp, testdf], axis=0)
 
+        list(testdf.index)
 
+        corpus = []
+        for i in range(ds.shape[0]):
+            corpus.append(ds.iloc[i][0])
 
-
+        from sklearn.feature_extraction.text import TfidfVectorizer
+        vectorizer = TfidfVectorizer()
+        X = vectorizer.fit_transform(corpus)
+        feature_names = vectorizer.get_feature_names()
+        dense = X.todense()
+        denselist = dense.tolist()
+        df2 = pd.DataFrame(denselist, columns=feature_names)
+        df2
 
 
 
