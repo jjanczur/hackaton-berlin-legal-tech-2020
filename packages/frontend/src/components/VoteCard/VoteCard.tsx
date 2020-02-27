@@ -30,17 +30,19 @@ const useStyles = makeStyles(theme => ({
 const VoteCard = () => {
   const classes = useStyles();
   const [state, setState] = React.useState({
-    gilad: true,
-    jason: false,
-    antoine: false,
+    incitement: true,
+    insult: false,
+    gossip: false,
+    defamation: false,
   });
 
   const handleChange = (name: any) => (event: any) => {
     setState({...state, [name]: event.target.checked});
   };
 
-  const {gilad, jason, antoine} = state;
-  const error = [gilad, jason, antoine].filter(v => v).length !== 2;
+  const {incitement, insult, gossip, defamation} = state;
+  const error =
+    [incitement, insult, gossip, defamation].filter(v => v).length === 0;
   return (
     <Card className={classes.card}>
       <CardHeader title="This case is being investigated by the justice warriors.. " />
@@ -59,14 +61,14 @@ const VoteCard = () => {
               component="fieldset"
               className={classes.formControl}
             >
-              <FormLabel component="legend">Pick two</FormLabel>
+              <FormLabel component="legend">Pick the </FormLabel>
               <FormGroup>
                 <FormControlLabel
                   control={
                     <Checkbox
-                      checked={gilad}
-                      onChange={handleChange('gilad')}
-                      value="gilad"
+                      checked={incitement}
+                      onChange={handleChange('incitement')}
+                      value="incitement"
                     />
                   }
                   label="Incitemenet of Masses(§ 130 StGB)"
@@ -74,9 +76,9 @@ const VoteCard = () => {
                 <FormControlLabel
                   control={
                     <Checkbox
-                      checked={jason}
-                      onChange={handleChange('jason')}
-                      value="jason"
+                      checked={insult}
+                      onChange={handleChange('insult')}
+                      value="insult"
                     />
                   }
                   label="Insult (§ 185 StGB)"
@@ -84,15 +86,25 @@ const VoteCard = () => {
                 <FormControlLabel
                   control={
                     <Checkbox
-                      checked={antoine}
-                      onChange={handleChange('antoine')}
-                      value="antoine"
+                      checked={gossip}
+                      onChange={handleChange('gossip')}
+                      value="gossip"
                     />
                   }
                   label="Malicious Gossip(§ 186 StGB)"
                 />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={defamation}
+                      onChange={handleChange('defamation')}
+                      value="defamation"
+                    />
+                  }
+                  label="Defamation (§ 187 StGB)"
+                />
               </FormGroup>
-              <FormHelperText>You can display an error</FormHelperText>
+              <FormHelperText>Nothing illegal?</FormHelperText>
             </FormControl>
           </Grid>
         </Grid>
