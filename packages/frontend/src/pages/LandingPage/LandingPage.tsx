@@ -31,15 +31,6 @@ function LandingPage(props: any) {
             />
           </Grid>
           <Grid item xs={4} />
-          <Grid item xs={4}>
-            <ResultsCard />
-          </Grid>
-          <Grid item xs={6}>
-            <VoteCard />
-          </Grid>
-          <Grid item xs={4}>
-            <ReportCaseCard />
-          </Grid>
         </Grid>
       </Background>
     );
@@ -54,51 +45,47 @@ function LandingPage(props: any) {
       >
         <Grid container alignContent="center">
           <Grid item xs={5}>
-            <ResultsCard />
+            <ResultsCard username={state.profileName} />
           </Grid>
           <Grid item xs={7}>
-            <VoteCard />
+            <VoteCard
+              onSubmit={() => {
+                setState({screen: 3, profileName: ''});
+              }}
+            />
           </Grid>
         </Grid>
       </Background>
     );
   }
 
-  return (
-    <Background
-      style={{
-        backgroundImage: `url(${picture})`,
-      }}
-    >
-      <Grid container alignContent="center">
-        <Grid item xs={4} />
-        <Grid item xs={4}>
-          <InsertLinkCard
-            onSubmit={(profile: any) => {
-              setState({screen: 2, profileName: profile});
-              console.log(profile);
-            }}
-          />
+  if (state.screen === 3) {
+    return (
+      <Background
+        style={{
+          backgroundImage: `url(${picture})`,
+        }}
+      >
+        <Grid container alignContent="center">
+          <Grid item xs={4} />
+          <Grid item xs={4}>
+            <ReportCaseCard />
+          </Grid>
+          <Grid item xs={4} />
         </Grid>
-        <Grid item xs={4} />
-        <Grid item xs={4}>
-          <ResultsCard />
-        </Grid>
-        <Grid item xs={6}>
-          <VoteCard />
-        </Grid>
-        <Grid item xs={4}>
-          <ReportCaseCard />
-        </Grid>
-      </Grid>
-    </Background>
-  );
+      </Background>
+    );
+  }
+
+  return <div />;
 }
 
 const Background = styled.div`
   display: flex;
   background-color: rgba(74, 74, 74, 1);
   flex-direction: column;
+  height: 100vh;
+  width: 100vw;
 `;
 
 export default LandingPage;

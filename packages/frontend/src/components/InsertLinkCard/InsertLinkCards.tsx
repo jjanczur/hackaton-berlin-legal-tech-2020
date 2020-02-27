@@ -4,11 +4,9 @@ import {
   Card,
   CardHeader,
   CardContent,
-  InputLabel,
-  FormControl,
-  OutlinedInput,
   CardActions,
   Typography,
+  TextField,
 } from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 
@@ -24,23 +22,32 @@ type Props = {
 };
 
 const InsertLinkCard = (props: Props) => {
+  const [value, setValue] = React.useState('');
+
+  const handleChange = (event: any) => {
+    setValue(event.target.value);
+  };
   const classes = useStyles();
   return (
     <Card className={classes.card}>
       <CardHeader title="Is this hate speech?" />
       <CardContent>
         <Typography>Let the justice league check that for you !!!</Typography>
-        <FormControl fullWidth>
-          <InputLabel>Link</InputLabel>
-          <OutlinedInput />
-        </FormControl>
+        <TextField
+          id="outlined-multiline-static"
+          label="Twitter Id"
+          placeholder="Enter Twitter Id"
+          variant="outlined"
+          value={value}
+          onChange={handleChange}
+        />
       </CardContent>
       <CardActions>
         <Button
           variant="contained"
           color="primary"
           onClick={() => {
-            props.onSubmit('realDonalTrump');
+            props.onSubmit(value);
           }}
         >
           Submit

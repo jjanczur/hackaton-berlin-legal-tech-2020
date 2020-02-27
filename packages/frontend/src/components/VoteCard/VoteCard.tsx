@@ -32,7 +32,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const VoteCard = () => {
+type Props = {
+  onSubmit: any;
+};
+
+const VoteCard = (props: Props) => {
   const classes = useStyles();
   const [state, setState] = React.useState({
     incitement: false,
@@ -183,7 +187,13 @@ const VoteCard = () => {
         </Grid>
       </CardContent>
       <CardActions>
-        <Button variant="contained" color="primary">
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            props.onSubmit();
+          }}
+        >
           Submit
         </Button>
       </CardActions>
