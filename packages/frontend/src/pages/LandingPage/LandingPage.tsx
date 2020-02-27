@@ -5,10 +5,15 @@ import InsertLinkCard from '../../components/InsertLinkCard';
 import ReportCaseCard from '../../components/ReportCaseCard';
 import ResultsCard from '../../components/ResultsCard';
 import VoteCard from '../../components/VoteCard';
+import picture from '../../logo.png';
 
 function LandingPage(props: any) {
   return (
-    <Background>
+    <Background
+      style={{
+        backgroundImage: `url(${picture})`,
+      }}
+    >
       <Grid container>
         <Grid item xs={4}>
           <InsertLinkCard />
@@ -19,7 +24,7 @@ function LandingPage(props: any) {
         <Grid item xs={4}>
           <ResultsCard />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={6}>
           <VoteCard />
         </Grid>
       </Grid>
@@ -31,8 +36,7 @@ const Background = styled.div`
   display: flex;
   background-color: rgba(74, 74, 74, 1);
   flex-direction: column;
-  height: 100vh;
-  width: 100vw;
+  background-image: ;
 `;
 
 export default LandingPage;
