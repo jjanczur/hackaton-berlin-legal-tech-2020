@@ -19,7 +19,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const InsertLinkCard = () => {
+type Props = {
+  onSubmit: any;
+};
+
+const InsertLinkCard = (props: Props) => {
   const classes = useStyles();
   return (
     <Card className={classes.card}>
@@ -32,7 +36,15 @@ const InsertLinkCard = () => {
         </FormControl>
       </CardContent>
       <CardActions>
-        <Button>Submit</Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            props.onSubmit('realDonalTrump');
+          }}
+        >
+          Submit
+        </Button>
       </CardActions>
     </Card>
   );
