@@ -1,1 +1,1 @@
-# hackaton-berlin-legal-tech-2020
+# hackathon-berlin-legal-tech-2020
