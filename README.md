@@ -2,10 +2,10 @@
 
 Prototype for identifying and marking hate speech
 
-##Issues
+## Issues
 * lack of German hate speech data base
 * chaotic structure of project
 
-##TODO
+## TODO
 implement and test naive bayes approach
 
