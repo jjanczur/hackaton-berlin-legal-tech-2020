@@ -4,7 +4,9 @@ Prototype for identifying and marking hate speech
 
 ## Issues
 * lack of German hate speech data base
-* chaotic structure of project
+
+
+
 
 
 
