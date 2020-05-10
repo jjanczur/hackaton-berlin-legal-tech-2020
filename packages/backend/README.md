@@ -13,7 +13,7 @@ Python 3.6+
 ## Installation
 Install the required packages in your local environment (ideally virtualenv, conda, etc.).
 ```bash
-pip install -r requirements
+pip install -r requirements.txt
 ``` 
 
 
