@@ -29,6 +29,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 import joblib
+import os
 
 
 def evaluate_model(label_test, predictions):
@@ -44,7 +45,7 @@ def apply_model(training_data, testing_data , label_train):
     label_train = label_train.astype('int')
 
     naive_bayes.fit(training_data, label_train)
-    joblib.dump(naive_bayes, naive_bayes)
+    joblib.dump(naive_bayes, 'naive_bayes.joblib')
     predictions = naive_bayes.predict(testing_data)
     return predictions
 
@@ -93,6 +94,7 @@ def train_model_mixed_data(type_tweet, split_index, custom_tweet_data = pd.Serie
 def import_data(filename = "insults.csv"):
     # Dataset "insults.csv" from https://github.com/t-davidson/hate-speech-and-offensive-language/tree/master/data
 
+    cwd = os.getcwd()
     df = pd.read_csv(filename)
 
     #Get for each index the class.

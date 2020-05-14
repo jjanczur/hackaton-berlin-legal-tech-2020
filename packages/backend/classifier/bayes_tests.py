@@ -1,5 +1,5 @@
 import unittest
-import bayes_classifier
+from .bayes_classifier import *
 import joblib
 
 
@@ -11,20 +11,20 @@ class MyTestCase(unittest.TestCase):
 
     def test_english_data(self):
 
-        imported_tweets = bayes_classifier.import_data()
-        training_data, testing_data, label_train, label_test = bayes_classifier.train_model(imported_tweets)
-        predictions = bayes_classifier.apply_model(training_data, testing_data, label_train)
-        bayes_classifier.evaluate_model(label_test, predictions)
+        imported_tweets = import_data('./classifier/insults.csv')
+        training_data, testing_data, label_train, label_test = train_model(imported_tweets)
+        predictions = apply_model(training_data, testing_data, label_train)
+        evaluate_model(label_test, predictions)
 
         #Now with cleaning
 
-        print("Cleaned:\n")
+        """print("Cleaned:\n")
 
-        bayes_classifier.clean_tweets(imported_tweets)
+        clean_tweets(imported_tweets)
 
-        training_data, testing_data, label_train, label_test = bayes_classifier.train_model(imported_tweets)
-        predictions = bayes_classifier.apply_model(training_data, testing_data, label_train)
-        bayes_classifier.evaluate_model(label_test, predictions)
+        training_data, testing_data, label_train, label_test = train_model(imported_tweets)
+        predictions = apply_model(training_data, testing_data, label_train)
+        evaluate_model(label_test, predictions)"""
 
 
 
