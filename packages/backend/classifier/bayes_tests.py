@@ -1,5 +1,5 @@
 import unittest
-from bayes_classifier import *
+import bayes_classifier
 import joblib
 
 
