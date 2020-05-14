@@ -28,6 +28,7 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+import joblib
 
 
 def evaluate_model(label_test, predictions):
@@ -43,6 +44,7 @@ def apply_model(training_data, testing_data , label_train):
     label_train = label_train.astype('int')
 
     naive_bayes.fit(training_data, label_train)
+    joblib.dump(naive_bayes, naive_bayes)
     predictions = naive_bayes.predict(testing_data)
     return predictions
 
