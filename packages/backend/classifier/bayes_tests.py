@@ -36,7 +36,7 @@ class MyTestCase(unittest.TestCase):
         tweet_data = pd.Series([
                                    "great, every other day theres maintenance issues, fix your shit blizzard im sick and tired of your piece of shit client",
                                    "test", "She may or may not be a Jew but she 's certainly stupid , she seems to think the Blacks wo n't kill her alongside every other White they can get their dirty hands on , what a muppet !"])
-        training_data, testing_data, label_train, label_test = train_model(import_data(), tweet_data)
+        training_data, testing_data, label_train, label_test = train_model(import_data('./classifier/insults.csv'), tweet_data)
 
 
         predictions = apply_model(training_data, testing_data, label_train)
